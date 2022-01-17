@@ -1,0 +1,33 @@
+server:
+  port: 8000
+
+spring:
+  application:
+    name: module-gateway
+  profiles:
+    active: dev
+    include:
+      - common
+      - nacos
+
+  cloud:
+    gateway:
+      routes:
+        - id: route-to-devtest-user
+          uri: lb://module-service-user
+          predicates:
+            - Path=/api/user/**
+          filters:
+            - StripPrefix=1
+
+        - id: route-to-devtest-mail
+          uri: lb://module-service-mail
+          predicates:
+            - Path=/api/mail/**
+          filters:
+            - RewritePath=/api/mail/(?<segment>/?.*),/mail/$\{segment}
+
+        - id: route-to-devtest-web
+          uri: lb://module-web-ui
+          predicates:
+            - Path=/**

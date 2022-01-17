@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wumugulu.devtest.service.user.mapper.UserMapper">
+
+    <resultMap id="BaseResultMap" type="com.wumugulu.devtest.basedata.User">
+            <id property="id" column="id" jdbcType="INTEGER"/>
+            <result property="username" column="username" jdbcType="VARCHAR"/>
+            <result property="password" column="password" jdbcType="VARCHAR"/>
+            <result property="email" column="email" jdbcType="VARCHAR"/>
+            <result property="status" column="status" jdbcType="TINYINT"/>
+            <result property="loginTimes" column="login_times" jdbcType="INTEGER"/>
+            <result property="lastLogin" column="last_login" jdbcType="TIMESTAMP"/>
+            <result property="isDeleted" column="is_deleted" jdbcType="TINYINT"/>
+            <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+            <result property="updateTime" column="update_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id,username,password,
+        email,status,login_times,last_login,is_deleted,
+        create_time,update_time
+    </sql>
+
+    <select id="myList" resultType="com.wumugulu.devtest.basedata.User" parameterType="int">
+        select <include refid="Base_Column_List"></include>
+            from sys_user
+                <where>
+                    <if test="isDeleted != null">
+                        and is_deleted = #{isDeleted}
+                    </if>
+                </where>
+    </select>
+
+    <update id="myLock" parameterType="com.wumugulu.devtest.basedata.User">
+        update sys_user
+            set status = #{status},
+                update_time = #{updateTime}
+            where
+                id = #{id}
+    </update>
+
+    <update id="myDelete" parameterType="int">
+        update sys_user
+            set is_deleted = #{isDeleted},
+                update_time = now()
+            where
+                id = #{id}
+    </update>
+
+    <insert id="myInsert" parameterType="com.wumugulu.devtest.basedata.User" useGeneratedKeys="true" keyProperty="id">
+        insert into sys_user (
+                                email, username
+                                <if test="password != null and username != ''">
+                                    , password
+                                </if>
+                                <if test="status != null">
+                                    , status
+                                </if>
+                                <if test="loginTimes != null">
+                                    , login_times
+                                </if>
+                                <if test="isDeleted != null">
+                                    , is_deleted
+                                </if>
+                                <if test="createTime != null">
+                                    , create_time
+                                </if>
+                              )
+            values (
+                    #{email}
+                    , #{username}
+                    <if test="password != null and username != ''">
+                        , #{password}
+                    </if>
+                    <if test="status != null">
+                        , #{status}
+                    </if>
+                    <if test="loginTimes != null">
+                        , #{loginTimes}
+                    </if>
+                    <if test="isDeleted != null">
+                        , #{isDeleted}
+                    </if>
+                    <if test="createTime != null">
+                        , #{createTime}
+                    </if>
+                   )
+    </insert>
+
+    <select id="myGetCountByUsername" resultType="int" parameterType="string">
+        select count(1)
+            from sys_user
+                where username = #{username}
+    </select>
+
+    <select id="myGetCountByEmail" resultType="int" parameterType="string">
+        select count(1)
+            from sys_user
+                where email = #{email}
+    </select>
+
+    <update id="myDeleteBatch" parameterType="java.util.List">
+        update sys_user
+            set is_deleted = 1,
+                update_time = now()
+            where
+                id IN
+                    <foreach item="item" index="index" collection="list" open="("  close=")" separator=",">
+                        #{item}
+                    </foreach>
+    </update>
+
+    <select id="listByLimit" resultType="com.wumugulu.devtest.basedata.User" parameterType="int">
+        select <include refid="Base_Column_List"></include>
+        from sys_user
+        limit #{limit}
+    </select>
+
+</mapper>

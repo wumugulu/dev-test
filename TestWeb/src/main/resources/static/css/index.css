@@ -1,0 +1,277 @@
+.wraper-container{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.wraper-header{
+    flex-grow: 0;
+    color: lightgrey;
+    background-color: black;
+}
+
+.wraper-footer{
+    flex-grow: 0;
+    position: relative;
+}
+
+.wraper-middle{
+    flex-grow: 1;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+}
+
+.wraper-left{
+    flex-grow: 0;
+    background-color: #EAEDF1;
+    overflow-y: visible;
+    position: relative;
+}
+
+.wraper-right{
+    flex-grow: 0;
+    background-color: #c2e7b0;
+    position: relative;
+}
+
+.wraper-center{
+    flex-grow: 1;
+    overflow-y: auto;
+    /*avoid布局被子内容撑开*/
+    width: 0;
+    padding: 10px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper-nav-tabs{
+    flex-grow: 0;
+}
+
+.wrapper-content{
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+/*隐藏垂直滚动条*/
+/*.wraper-left::-webkit-scrollbar{*/
+/*    width: 1px !important;*/
+/*    !*height: auto !important;*!*/
+/*}*/
+/*.el-scrollbar__wrap::-webkit-scrollbar{*/
+/*    width: 1px !important;;*/
+/*}*/
+.wraper-left{
+    /*用于兼容firefox的滚动条*/
+    scrollbar-color: transparent transparent;
+    scrollbar-track-color: transparent;
+    scrollbar-width: none; // thin,auto/none
+    -ms-scrollbar-track-color: transparent;
+
+}
+/*定义滚动条整体样式*/
+.wraper-left::-webkit-scrollbar{
+   width: 1px !important;
+}
+/*轨道部分*/
+.wraper-left::-webkit-scrollbar-track{
+   background-color: #f0f0f0;
+}
+/*滑块部分*/
+.wraper-left::-webkit-scrollbar-thumb{
+    position: absolute;
+    border-radius: 1px;
+    background-color: darkgrey;
+}
+
+/*设置active的menuitem样式*/
+.el-menu-item.is-active {
+    background-color: #FDFDFD !important;
+    border-right: 2px solid dodgerblue;
+}
+
+
+
+
+
+
+/*隐藏,显示headerBar的花哨梯形小按钮^_^*/
+.toggle-header-button{
+    position: relative;
+    background-color: #66b1ff;
+    height: 0px;
+    cursor: pointer;
+    text-align: center;
+}
+.toggle-header-button::after{
+    content: "";
+    position: absolute;
+    width: 80px;
+    height: 15px;
+    background-color: darkgray;
+    left: 50%;
+    bottom: 0;
+    /*(左右居中,向下偏移15px), (透视), (旋转-25度形成梯形)*/
+    transform: translate(-50%, 15px) perspective(1.5em) rotateX(-25deg);
+    /*渐变色*/
+    background-image: linear-gradient( to bottom, hsla(0, 0%, 100%, .2), hsla(0, 0%, 100%, .7));
+    /*这个属性会导致cursor失效,不明白为啥*/
+    z-index: -1;
+}
+.toggle-header-button i{
+    color: black;
+    font-size: 12px;
+    transform: translateY(-6px);
+}
+.toggle-menu-button {
+    position: absolute;
+    width: 10px;
+    height: 50px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    cursor: pointer;
+    background-color: gainsboro;
+    line-height: 50px;
+    text-align: center;
+    right: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 10px;
+}
+.toggle-footer-button {
+    position: absolute;
+    width: 60px;
+    height: 15px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    cursor: pointer;
+    background-color: gainsboro;
+    line-height: 15px;
+    text-align: center;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 5px;
+}
+
+.toggle-extend-button {
+    position: absolute;
+    width: 10px;
+    height: 50px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    cursor: pointer;
+    background-color: gainsboro;
+    line-height: 50px;
+    text-align: center;
+    left: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+/*.el-form-item {*/
+/*    margin-bottom: 5px !important;*/
+/*}*/
+/*.el-table td, .el-table th {*/
+/*    padding: 0 0;*/
+/*}*/
+/*.el-input__inner {*/
+/*    height: 22px !important;*/
+/*    line-height: 22px !important;*/
+/*    padding: 0 5px;*/
+/*}*/
+/*.el-textarea__inner {*/
+/*    padding: 0 5px;*/
+/*}*/
+/*.el-form-item__label{*/
+/*    line-height: 22px !important;*/
+/*}*/
+/*.el-form-item__content {*/
+/*    line-height: 22px !important;*/
+/*}*/
+/*.el-button--mini {*/
+/*    padding: 4px 15px;*/
+/*}*/
+/*.el-tabs {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*}*/
+/*.el-tabs__header {*/
+/*    margin-bottom: 1px;*/
+/*}*/
+/*.el-tabs__content {*/
+/*    flex-grow: 1;*/
+/*}*/
+/*.el-tab-pane {*/
+/*    height: 92vh;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    overflow-x: hidden;*/
+/*    overflow-y: auto;*/
+/*}*/
+/*.el-tabs__item {*/
+/*    font-size: 10px;*/
+/*    height: 25px;*/
+/*    line-height: 25px;*/
+/*}*/
+/*.el-checkbox__label {*/
+/*    padding-left: 5px;*/
+/*    padding-bottom: 5px;*/
+/*}*/
+/*.el-dialog {*/
+/*    margin-top: -10vh !important;*/
+/*    margin-bottom: 0 !important;*/
+/*    width: 35vw;*/
+/*    position: relative;*/
+/*    top: 50%;*/
+/*    transform: translateY(-50%);*/
+/*}*/
+/*textarea {*/
+/*    font-family: "Helvetica Neue",Helvetica,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","微软雅黑",Arial,sans-serif;*/
+/*}*/
+
+/*#app{*/
+/*    !*height: 95vh;*!*/
+/*    !*display: flex;*!*/
+/*    !*flex-direction: column;*!*/
+/*}*/
+/*.wrapper{*/
+/*    border: 1px solid lightblue;*/
+/*    padding: 5px 5px 0 5px;*/
+/*    margin-top: 5px;*/
+/*}*/
+/*.wrapper-jdbc{*/
+/*}*/
+/*.wrapper-setting{*/
+/*}*/
+/*.wrapper-buttons {*/
+/*    padding-bottom: 5px;*/
+/*    margin-bottom: 5px;*/
+/*}*/
+/*.wrapper-main{*/
+/*    !*flex-grow: 1;*!*/
+/*    !*overflow-y: auto;*!*/
+/*    !*overflow-x: auto;*!*/
+/*    !*position: fixed;*!*/
+/*    padding-bottom: 5px;*/
+/*}*/
+/*.sub-input-label .el-form-item__label{*/
+/*    color: brown;*/
+/*    padding-right: 3px;*/
+/*}*/
+/*#tablesInput {*/
+/*    color: red;*/
+/*    font-weight: bold;*/
+/*}*/

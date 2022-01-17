@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<HTML lang="en">
+<HEAD>
+    <TITLE> DevTest UI </TITLE>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="./css/element-2.15.2.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <script type="application/javascript" src="./js/vue.js"></script>
+    <script type="application/javascript" src="/js/axios.min.js"></script>
+    <script src="./js/element-2.15.2.js"></script>
+    <script src="./js/httpVueLoader.js"></script>
+    <script src="./js/request.js"></script>
+</HEAD>
+
+<BODY style="margin: 0;padding: 0;">
+<div id="app" class="wraper-container">
+    <div class="wraper-header">
+        <el-collapse-transition>
+            <nav-header v-show="showHeader" />
+        </el-collapse-transition>
+
+        <div class="toggle-header-button" @click="doToggleHeader">
+            <!-- 这个使用的是::after来渲染边框 -->
+            <i :class="showHeader?'el-icon-caret-top':'el-icon-caret-bottom'" ></i>
+        </div>
+    </div>
+
+    <div class="wraper-middle">
+        <div class="wraper-center">
+            <div class="wrapper-content" style="border:0 solid red;">
+                <view-home></view-home>
+            </div>
+        </div>
+    </div>
+
+    <div class="wraper-footer">
+        <span ref="refToggleFooterBtn" class="toggle-footer-button" @click="doToggleFooter">
+          <i :class="showFooter?'el-icon-caret-bottom':'el-icon-caret-top'"></i>
+        </span>
+
+        <el-collapse-transition>
+            <nav-footer v-show="showFooter" />
+        </el-collapse-transition>
+    </div>
+</div>
+</BODY>
+
+<script>
+    Vue.use(httpVueLoader);
+
+    var vm = new Vue({
+        el: '#app',
+        components: {
+            navHeader: httpVueLoader('./component/header.vue'),
+            navFooter: httpVueLoader('./component/footer.vue'),
+            viewHome: httpVueLoader('./component/home.vue')
+        },
+        data() {
+            return {
+                msg: 'this is vue starter 3',
+                showHeader: true,
+                showFooter: true,
+                showMenu: true,
+                showExtend: true,
+                appVersion: '0.0.0',
+                showDialog: false,
+                labelWidth: '90px',
+                subLabelWidth: '60px',
+                // upperHeight: 0,
+                tableHeight: 0,
+                tabsHeight: 600,
+                clientForm: {
+                },
+                tableData: [],
+                selections: []
+            }
+        } ,
+        computed: {
+            tableNames() {
+                const selectedTables = this.selections.map(item=>item.table_name);
+                return selectedTables;
+            }
+        },
+        mounted() {
+            console.info('index.html', 'netRequest');
+        },
+        methods: {
+            testFunc() {
+                console.info('index.html', 'testFunc');
+            },
+            doToggleHeader(event) {
+                console.info('doToggleHeader', event);
+                this.showHeader = !this.showHeader;
+            },
+            doToggleFooter(event) {
+                /*let selfElement = this.$refs['refToggleFooterBtn'];
+                this.$refs['refToggleFooterBtn'].style.top = (this.showFooter?selfElement.scrollHeight:selfElement.offsetHeight)*(-1) + "px";*/
+                this.showFooter = !this.showFooter;
+            },
+            doToggleMenu(event) {
+                console.info('doToggleMenu', event);
+                this.showMenu = !this.showMenu;
+            },
+            doToggleExtend(event) {
+                this.showExtend = !this.showExtend;
+            }
+        }
+    });
+</script>
+</HTML>

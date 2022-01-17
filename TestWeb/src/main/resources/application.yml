@@ -1,0 +1,11 @@
+server:
+  port: 9000
+
+spring:
+  application:
+    name: module-web-ui
+  profiles:
+    active: dev
+    include:
+      - common
+      - nacos

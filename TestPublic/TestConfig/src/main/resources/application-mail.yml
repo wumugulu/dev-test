@@ -1,0 +1,7 @@
+myMail:
+  host: smtp.163.com
+  port: 25
+  auth: true
+  from: f_ky@163.com
+  user: f_ky
+  pass: gloria1978
