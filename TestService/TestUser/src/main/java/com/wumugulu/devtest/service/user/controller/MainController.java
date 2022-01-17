@@ -70,6 +70,15 @@ public class MainController {
         return DictUtil.success(result);
     }
 
+    @PostMapping("/update")
+    public Dict update(@RequestBody User user) {
+        if (user == null || user.getId() == null)
+            return DictUtil.error(10009, "user can not be null or empty");
+
+        Integer result = userService.myUpdate(user);
+        return DictUtil.success(result);
+    }
+
     @PostMapping("/reg")
     public Dict reg(@RequestBody User user) {
         if (StrUtil.isBlank(user.getEmail()))

@@ -17,4 +17,4 @@ RUN chmod +x /home/apps/startup.sh
 
 EXPOSE 8000
 
-# CMD ["sh", "-c", "/home/apps/startup.sh"]
+CMD bash /home/apps/startup.sh

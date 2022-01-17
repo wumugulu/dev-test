@@ -75,6 +75,12 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         return baseMapper.myDeleteBatch(ids);
     }
 
+    @Override
+    public Integer myUpdate(User user) {
+        user.setUpdateTime(new Date());
+        return baseMapper.myUpdate(user);
+    }
+
 
 }
 

@@ -52,7 +52,7 @@
     <insert id="myInsert" parameterType="com.wumugulu.devtest.basedata.User" useGeneratedKeys="true" keyProperty="id">
         insert into sys_user (
                                 email, username
-                                <if test="password != null and username != ''">
+                                <if test="password != null and password != ''">
                                     , password
                                 </if>
                                 <if test="status != null">
@@ -71,7 +71,7 @@
             values (
                     #{email}
                     , #{username}
-                    <if test="password != null and username != ''">
+                    <if test="password != null and password != ''">
                         , #{password}
                     </if>
                     <if test="status != null">
@@ -110,6 +110,27 @@
                     <foreach item="item" index="index" collection="list" open="("  close=")" separator=",">
                         #{item}
                     </foreach>
+    </update>
+
+    <update id="myUpdate" parameterType="com.wumugulu.devtest.basedata.User">
+        update sys_user
+            set update_time = #{updateTime}
+                <if test="password != null and password != ''">
+                    , password = #{password}
+                </if>
+                <if test="status != null">
+                    , status = #{status}
+                </if>
+                <if test="isDeleted != null">
+                    , is_deleted = #{isDeleted}
+                </if>
+                <if test="lastLogin != null">
+                    , last_login = #{lastLogin}
+                </if>
+                <if test="loginTimes != null">
+                    , login_times = #{loginTimes}
+                </if>
+            where id = #{id}
     </update>
 
     <select id="listByLimit" resultType="com.wumugulu.devtest.basedata.User" parameterType="int">

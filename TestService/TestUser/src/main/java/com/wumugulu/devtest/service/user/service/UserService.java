@@ -42,4 +42,6 @@ public interface UserService extends IService<User> {
     Integer myReg(User user);
 
     Integer myDeleteBatch(List<Integer> ids);
+
+    Integer myUpdate(User user);
 }

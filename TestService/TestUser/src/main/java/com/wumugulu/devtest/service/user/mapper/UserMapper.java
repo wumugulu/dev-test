@@ -28,6 +28,8 @@ public interface UserMapper extends BaseMapper<User> {
     Integer myInsert(User userSubmit);
 
     Integer myDeleteBatch(List<Integer> ids);
+
+    Integer myUpdate(User user);
 }
 
 

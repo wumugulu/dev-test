@@ -60,20 +60,11 @@ function getUrl(actionCmd) {
         case "USER_DELETE_BATCH":
             url = '/api/user/deleteBatch';
             break;
+        case "USER_UPDATE":
+            url = '/api/user/update';
+            break;
         case "MAIL_QUERY":
             url = '/api/mail/query';
-            break;
-        case "listConfig":
-            url = '/zkcenter/api/listConfig';
-            break;
-        case "add":
-            url = '/zkcenter/api/add';
-            break;
-        case "update":
-            url = '/zkcenter/api/update';
-            break;
-        case "remove":
-            url = '/zkcenter/api/remove';
             break;
         default:
             break;
