@@ -75,3 +75,4 @@ echo ----------------3. deplay over !!!
 echo
 
 echo please open your browser and access:  http://[YOUR_DOCKER_HOST_IP]:8000/
+echo
