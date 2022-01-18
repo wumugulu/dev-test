@@ -2,7 +2,7 @@
 
 # 利用maven镜像下载代码,构建应用
 echo
-echo ----------------1. 开始下载代码,构建应用......
+echo ----------------1. download source code, package app......
 echo
 
 DEMO_FILE_DIR=/home/apps
@@ -19,12 +19,12 @@ docker run -it --name tmp-maven -v $DEMO_FILE_DIR:/home/apps-docker maven:3.8.4-
 
 # 开始部署 ...
 echo
-echo ----------------2. 开始部署......
+echo ----------------2. deploy project......
 echo
 
 # 1. 拉取,并运行nacos
 echo
-echo ------------------2.1 开始运行nacos容器......
+echo ------------------2.1 run nacos container......
 echo
 # docker pull nacos/nacos-server:2.0.3-slim
 docker rm -f test-nacos
@@ -32,7 +32,7 @@ docker run -d --name test-nacos -e MODE=standalone -e JVM_XMS=128m -e JVM_XMX=12
 
 # 2. 部署myslq以及app
 echo
-echo ------------------2.2 开始构建和运行mysql容器......
+echo ------------------2.2 build mysql image and run my mysql container......
 echo
 DEMO_PROJECT_DIR=$DEMO_FILE_DIR/dev-test
 
@@ -45,7 +45,7 @@ docker run -d --name test-mysql -e MYSQL_ROOT_PASSWORD=123456 -p 3306:3306 -p 33
 
 # 构建,并运行自己的app容器
 echo
-echo ------------------2.3 开始构建和运行apps容器......
+echo ------------------2.3 buile apps image and run my apps container......
 echo
 # 3.准备jar包及启动脚本
 DEMO_APPS_DIR=$DEMO_PROJECT_DIR/file/shell/apps
@@ -72,7 +72,7 @@ docker ps
 # docker logs -f test-apps
 
 echo
-echo ----------------3. 部署完成!!!
+echo ----------------3. deplay over !!!
 echo
 
 echo please open your browser and access:  http://[YOUR_DOCKER_HOST_IP]:8000/
