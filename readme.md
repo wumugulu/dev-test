@@ -154,7 +154,7 @@ dev-test.
 ## 四、安装说明
 ```shell
 # 获取安装脚本
-wget -P /tmp https://github.com/wumugulu/dev-test/blob/main/install.sh
+wget -P /tmp https://raw.githubusercontent.com/wumugulu/dev-test/main/install.sh
 
 # 添加执行权限 
 sudo chmod +x /tmp/install.sh
