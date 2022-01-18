@@ -6,7 +6,7 @@ echo ----------------1. download source code, package app......
 echo
 
 DEMO_FILE_DIR=/home/apps
-sudo rm -f $DEMO_FILE_DIR/*
+sudo rm -rf $DEMO_FILE_DIR/*
 docker rm -f tmp-maven
 docker run -it --name tmp-maven -v $DEMO_FILE_DIR:/home/apps-docker maven:3.8.4-jdk-8
       /bin/bash -c \
