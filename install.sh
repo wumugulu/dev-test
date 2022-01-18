@@ -67,8 +67,9 @@ docker build -t wumugulu/myapps:0.3 .
 docker rm -f test-apps
 docker run -d --name test-apps -p 8000:8000 --link test-nacos:nacos-host --link test-mysql:mysql-host wumugulu/myapps:0.3
 # docker run -it --name test-apps -p 8000:8000 --link test-nacos:nacos-host --link test-mysql:mysql-host wumugulu/myapps:0.3 /bin/bash
+
 docker ps
-docker logs -f test-apps
+# docker logs -f test-apps
 
 echo
 echo ----------------3. 部署完成!!!
