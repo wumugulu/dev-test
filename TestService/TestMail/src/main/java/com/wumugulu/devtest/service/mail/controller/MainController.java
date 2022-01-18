@@ -42,7 +42,7 @@ public class MainController {
         return DictUtil.success(list);
     }
 
-    @RequestMapping("/query")
+    @PostMapping("/query")
     public Dict query(String keyword) {
         List<MailNotify> list = mailNotifyService.myQuery(keyword);
         return DictUtil.success(list);

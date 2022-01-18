@@ -49,7 +49,7 @@ module.exports = {
   methods: {
     doMailRefresh() {
       netRequest({
-        method: 'get',
+        method: 'post',
         action: 'MAIL_QUERY',
         param: {
           keyword: this.keyword
