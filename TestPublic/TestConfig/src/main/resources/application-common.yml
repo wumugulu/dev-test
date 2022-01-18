@@ -6,3 +6,7 @@ spring:
 logging:
   level:
     com.wumugulu.devtest: debug
+    root: INFO
+#  path: logs/
+  file:
+    name: ./logs/${spring.application.name}.log
