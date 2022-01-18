@@ -15,6 +15,7 @@ COPY ./jar/startup.sh /home/apps/
 RUN chmod +x /home/apps/startup.sh
 #CMD ["chmod", "+x", "/home/apps/startup.sh"]
 
-EXPOSE 8000
-
 CMD bash /home/apps/startup.sh
+# ENTRYPOINT ["/home/apps/startup.sh"]
+
+EXPOSE 8000

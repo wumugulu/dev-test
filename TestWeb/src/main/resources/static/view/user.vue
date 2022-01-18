@@ -49,6 +49,7 @@
           </template>
         </el-table-column>
         <el-table-column prop="lastLogin" label="最后登录" width="200"></el-table-column>
+        <el-table-column prop="loginTimes" label="登录册数" width="80"></el-table-column>
         <el-table-column label="操作" width="180" fixed="right">
           <template slot-scope="scopeData">
             <el-tag size="mini" type="warning" style="cursor: pointer;"
