@@ -13,4 +13,4 @@ logging:
 
 test:
   apps:
-    path: /home/apps
+    path: /home
