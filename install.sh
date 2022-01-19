@@ -8,13 +8,14 @@ echo
 sudo rm -rf /home/apps/*
 
 docker rm -f tmp-maven
-docker run -it --name tmp-maven -v /home/apps:/home/apps-docker maven:3.8.4-jdk-8 /bin/bash -c \
+docker run -it --name tmp-maven -v /home/apps:/home/apps-docker -v /tmp/settings.xml:/usr/share/maven/ref/settings.xml maven:3.8.4-jdk-8 /bin/bash -c \
       "cd /home/apps-docker && \
       rm -rf /home/apps-docker/* && \
       git clone git://github.com/wumugulu/dev-test.git && \
       cd dev-test && \
       mvn clean package -DskipTests && \
       exit"
+
 
 # 开始部署 ...
 echo
