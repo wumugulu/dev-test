@@ -154,6 +154,7 @@ dev-test.
 ## 四、安装说明
 ```shell
 # 获取安装脚本
+wget -P /tmp https://raw.githubusercontent.com/wumugulu/dev-test/main/file/shell/maven/settings.xml
 wget -P /tmp https://raw.githubusercontent.com/wumugulu/dev-test/main/install.sh
 
 # 添加执行权限 
