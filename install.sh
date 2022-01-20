@@ -2,7 +2,7 @@
 
 # 利用maven镜像下载代码,构建应用
 echo
-echo ---------------- 1. run maven docker, pull source code(git), and package apps to jar......
+echo ---------------- 1. run maven docker, pull source code by git, and package apps to jar......
 echo
 
 sudo rm -rf /home/apps/*
