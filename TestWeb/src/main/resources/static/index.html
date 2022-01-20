@@ -49,8 +49,8 @@
     Vue.use(httpVueLoader);
 
     // console.info('location', window.location);
-    const dockerHost = window.location.hostname;
-    axios.defaults.baseURL = "http://" + dockerHost + ":9000";
+    const hostApps = window.location.hostname;
+    axios.defaults.baseURL = "http://" + hostApps + ":9000";
 
     var vm = new Vue({
         el: '#app',
