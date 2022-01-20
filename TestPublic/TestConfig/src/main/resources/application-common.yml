@@ -9,7 +9,7 @@ logging:
     root: INFO
 #  path: logs/
   file:
-    name: ${test.apps.path}/logs/${spring.application.name}.log
+    name: logs/${spring.application.name}.log
 
 test:
   apps:
