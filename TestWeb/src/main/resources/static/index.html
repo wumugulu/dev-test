@@ -47,6 +47,7 @@
 
 <script>
     Vue.use(httpVueLoader);
+    axios.defaults.baseURL = "http://localhost:9000";
 
     var vm = new Vue({
         el: '#app',

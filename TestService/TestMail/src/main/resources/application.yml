@@ -1,6 +1,6 @@
 
 server:
-  port: 8020
+  port: 9020
 
 spring:
   application:
