@@ -10,7 +10,7 @@
 cd /home/apps
 
 sleep 3s
-nohup java -jar -Xmx128m -XX:MaxMetaspaceSize=128m -XX:CompressedClassSpaceSize=24m ./apps/app-gateway/TestGateway-1.0.jar &
+nohup java -jar -Xmx128m -XX:MaxMetaspaceSize=128m -XX:CompressedClassSpaceSize=24m ./app-gateway/TestGateway-1.0.jar &
 
 sleep 3s
 nohup java -jar -Xmx128m -XX:MaxMetaspaceSize=128m -XX:CompressedClassSpaceSize=24m ./app-service-mail/TestMail-1.0.jar &
