@@ -15,7 +15,7 @@ ADD ./jar/startup.sh /home/apps/
 RUN chmod +x /home/apps/startup.sh
 #CMD ["chmod", "+x", "/home/apps/startup.sh"]
 
-EXPOSE 8000
+EXPOSE 8000 9000
 
 #ENTRYPOINT ["java", "-jar", "-Xmx128m", "-XX:MaxMetaspaceSize=128m", "-XX:CompressedClassSpaceSize=24m", "/home/apps/app-web/TestWeb-1.0.jar"]
 #ENTRYPOINT ["/home/apps/startup.sh"]

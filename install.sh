@@ -68,7 +68,7 @@ docker build -t wumugulu/myapps:0.3 .
 
 # 3.3 启动apps容器
 docker rm -f test-apps
-docker run -d --name test-apps -p 8000:8000 --link test-nacos:nacos-host --link test-mysql:mysql-host wumugulu/myapps:0.3
+docker run -d --name test-apps -p 8000:8000 -p 9000:9000 --link test-nacos:nacos-host --link test-mysql:mysql-host wumugulu/myapps:0.3
 
 docker ps
 # docker logs -f test-apps
