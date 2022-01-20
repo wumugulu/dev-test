@@ -2,7 +2,7 @@
 
 # 利用maven镜像下载代码,构建应用
 echo
-echo ----------------1. download source code, package app......
+echo ---------------- 1. run maven docker, pull source code(git), and package apps to jar......
 echo
 
 sudo rm -rf /home/apps/*
@@ -19,12 +19,12 @@ docker run -it --name tmp-maven -v /home/apps:/home/apps-docker -v /tmp/settings
 
 # 开始部署 ...
 echo
-echo ----------------2. deploy project......
+echo ---------------- 2. deploy project......
 echo
 
 # 1. 拉取,并运行nacos
 echo
-echo ------------------2.1 run nacos container......
+echo ------------------ 2.1 run nacos container......
 echo
 # docker pull nacos/nacos-server:2.0.3-slim
 docker rm -f test-nacos
@@ -32,7 +32,7 @@ docker run -d --name test-nacos -e MODE=standalone -e JVM_XMS=256m -e JVM_XMX=25
 
 # 2. 部署myslq
 echo
-echo ------------------2.2 build mysql image and run my mysql container......
+echo ------------------ 2.2 build diy mysql image and run my mysql container......
 echo
 DEMO_PROJECT_DIR=/home/apps/dev-test
 DEMO_MYSQL_DIR=$DEMO_PROJECT_DIR/file/shell/mysql
@@ -45,7 +45,7 @@ docker run -d --name test-mysql -e MYSQL_ROOT_PASSWORD=123456 -p 3306:3306 -p 33
 
 # 3.构建,并运行自己的app容器
 echo
-echo ------------------2.3 buile apps image and run my apps container......
+echo ------------------ 2.3 buile diy apps image and run my apps container......
 echo
 
 # 3.1 准备jar包及启动脚本
@@ -74,8 +74,10 @@ docker ps
 # docker logs -f test-apps
 
 echo
-echo ----------------3. deplay over !!!
+echo ---------------- 3. deplay over !!!
 echo
 
-echo please open your browser and access:  http://[YOUR_DOCKER_HOST_IP]:8000/
+echo please wait a moment form app starting ...
+echo
+echo then open your browser and navigate to:  http://[YOUR_DOCKER_HOST_IP]:8000/
 echo
