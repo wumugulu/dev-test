@@ -28,7 +28,7 @@ echo ------------------2.1 run nacos container......
 echo
 # docker pull nacos/nacos-server:2.0.3-slim
 docker rm -f test-nacos
-docker run -d --name test-nacos -e MODE=standalone -e JVM_XMS=128m -e JVM_XMX=128m -p 8848:8848 nacos/nacos-server:2.0.3-slim
+docker run -d --name test-nacos -e MODE=standalone -e JVM_XMS=256m -e JVM_XMX=256m -p 8848:8848 nacos/nacos-server:2.0.3-slim
 
 # 2. 部署myslq
 echo
